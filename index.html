@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casamento Fernando e Letícia</title>
+
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #fafafa;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        header {
+            background: linear-gradient(to right, #fd97f9, #ffefd5);
+            padding: 20px 0;
+        }
+
+        header h1 {
+            color: #4a4a4a;
+            font-size: 2.5rem;
+        }
+
+        .photos img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .photos {
+            margin-bottom: 30px;
+        }
+
+        .message-form textarea {
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .message-form button {
+            background-color: #ffd700;
+            color: #4a4a4a;
+            font-weight: bold;
+        }
+
+        .message-form button:hover {
+            background-color: #ffb400;
+        }
+
+        .pix-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #ffefd5;
+            border-radius: 10px;
+        }
+
+        .pix-section img {
+            max-width: 200px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #ffefd5;
+            color: #4a4a4a;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header class="center-align">
+    <h1>Casamento de Fernando e Letícia</h1>
+</header>
+
+<div class="container">
+    <section>
+        <h4 class="center-align">Fotos do Casal</h4>
+        <div class="row photos">
+            <div class="col s12 m6 l4">
+                <!-- Substitua o caminho da imagem -->
+                <img src="foto-1.jpeg" alt="Foto 1">
+            </div>
+            <div class="col s12 m6 l4">
+                <img src="foto-2.jpeg" alt="Foto 2">
+            </div>
+            <div class="col s12 m6 l4">
+                <img src="foto-3.jpeg" alt="Foto 3">
+            </div>
+        </div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vulputate varius nulla, at accumsan ipsum tristique non. Maecenas vulputate vitae elit eu convallis. Vivamus porttitor felis vestibulum velit maximus egestas. Pellentesque non orci libero. Sed non dapibus ante. Pellentesque tincidunt tristique elit, vitae sagittis quam vehicula sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam risus eget fermentum rhoncus. Quisque hendrerit augue libero, a imperdiet elit molestie sed.</p>
+        <h4 class="center-align">Deixe sua Mensagem</h4>
+        <div class="row">
+           <form class="col s12 message-form">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="nome" type="text" placeholder="Seu nome">
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="mensagem" class="materialize-textarea" placeholder="Escreva sua mensagem aqui..."></textarea>
+                    </div>
+                </div>
+                <div class="center-align">
+                    <button type="button" class="btn waves-effect waves-light" onclick="enviarMensagem()">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Sessão PIX -->
+    <section class="pix-section">
+        <h5>Você quer nos dar um presente?</h4>
+        <p>Se quiser nos ajudar com a nossa lua de mel, envie um PIX para:</p>
+        <p><strong>Email: podcastmusicaemcasa@gmail.com</strong></p>
+        <p>Ou use o QR Code abaixo:</p>
+        <!-- Substitua o caminho do QR Code -->
+        <img src="qrcode-pix.png" alt="QR Code PIX">
+    </section>
+</div>
+
+<footer>
+    <p>Fernando e Letícia, 2024 - Todos os direitos reservados</p>
+</footer>
+
+<!-- Materialize JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+    function enviarMensagem() {
+        const nome = document.getElementById('nome').value.trim();
+        const mensagem = document.getElementById('mensagem').value.trim();
+
+        if (!nome || !mensagem) {
+            alert('Por favor, preencha seu nome e a mensagem.');
+            return;
+        }
+
+        const email = 'podcastmusicaemcasa@gmail.com';
+        const subject = 'Mensagem de Felicitação - Casamento Fernando e Letícia';
+        const body = encodeURIComponent(`Nome: ${nome}\n\nMensagem: ${mensagem}`);
+
+        const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+        window.location.href = mailtoLink;
+    }
+</script>
+
+</body>
+</html>
