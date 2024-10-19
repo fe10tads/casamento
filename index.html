@@ -112,17 +112,17 @@
         </div>
         <h4 class="center-align">O seu presente pode ser uma mensagem para nós!</h4>
         <div class="row">
-           <form class="col s12 message-form">
-                <div class="row">
+           <form class="col s12 message-form" id="form">
+                <div class="row field">
                     <div class="input-field col s12">
-                        <input id="nome" type="text" placeholder="Seu nome">
+                        <input id="from_name" name="from_name" type="text" placeholder="Seu nome">
                     </div>
                     <div class="input-field col s12">
-                        <textarea id="mensagem" class="materialize-textarea" placeholder="Escreva sua mensagem aqui..."></textarea>
+                        <textarea id="message" name="message" class="materialize-textarea" placeholder="Escreva sua mensagem aqui..."></textarea>
                     </div>
                 </div>
                 <div class="center-align">
-                    <button type="button" class="btn waves-effect waves-light" onclick="enviarMensagem()">Enviar</button>
+                    <input type="submit" id="button" value="enviar" class="btn waves-effect waves-light">
                 </div>
             </form>
         </div>
@@ -146,6 +146,13 @@
 <!-- Materialize JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('Zix0GtXMJ3LwXcs3g')
+</script>
+
 <script>
     function enviarMensagem() {
         const nome = document.getElementById('nome').value.trim();
@@ -163,6 +170,27 @@
         const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
         window.location.href = mailtoLink;
     }
+
+const btn = document.getElementById('button');
+
+document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_x430kaa';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Enviar Email';
+      alert('Enviado!');
+    }, (err) => {
+      btn.value = 'Enviar Email';
+      alert(JSON.stringify(err));
+    });
+});
 </script>
 
 </body>
